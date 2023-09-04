@@ -8,7 +8,7 @@ public class YearlyReport {
 ArrayList<InfoYear> yearsReport = new ArrayList<>(); // элемент один месяц
      public void loadFile (String path) {
          String content = readFileContentsOrNull(path);
-         String[] lines = content.split("\r\n");
+         String[] lines = content.split("\r?\n");
          for (int i = 1; i < lines.length; i++) {
              String line = lines[i]; // month,amount,is_expense
              String[] parts = line.split(",");

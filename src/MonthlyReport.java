@@ -8,7 +8,7 @@ public class MonthlyReport {
 ArrayList<Sale> sales = new ArrayList<>(); // поле со списком из продаж
     public void loadFile(String path) {
        String content = readFileContentsOrNull(path); // считывание контент файла
-        String[] lines = content.split("\r\n"); // разбивание по строкам
+        String[] lines = content.split("\r?\n"); // разбивание по строкам
         for (int i = 1; i < lines.length; i++) {
             String line = lines[i];
             String[] parts = line.split(",");   // разделение на части
@@ -16,6 +16,7 @@ ArrayList<Sale> sales = new ArrayList<>(); // поле со списком из 
             boolean is_expense = Boolean.parseBoolean(parts[1]);
             int quantity = Integer.parseInt(parts[2]);
             int price = Integer.parseInt(parts[3]); // извлечение нужных данных
+
         Sale sale = new Sale(name,is_expense, quantity,price);
         sales.add(sale); // в каждой строке создается объкт продажи , который складируется в список(сохраненная статистика)
         }
